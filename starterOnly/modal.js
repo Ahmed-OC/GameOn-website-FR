@@ -12,6 +12,8 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closebtn = document.querySelector(".close");
+const confirmationMessage = document.querySelectorAll(".bground")[1]
+
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -45,7 +47,6 @@ function numberIsValid(value) {
 }
 
 // validation form
-document.getElementById("email").addEventListener("click",validate)
 function validate(){
     const firstName = document.getElementById("first")
     const lastName = document.getElementById("last")
@@ -55,7 +56,7 @@ function validate(){
     const conditionbox = document.getElementById("checkbox1");
     let formisvalid = true;
     let radiochecked = 0;
-
+  
     
     if (!(firstName.value.length>=2)) // firstname must have a minimum length of 2
   {
@@ -109,10 +110,13 @@ function validate(){
     }
     else hideError(6)
 
+    
     if (formisvalid)
     {
       closemodal();
-      document.getElementsByTagName("reserve").reset();
+      showConfirmation();
+      setTimeout(closeConfirmation,4000)
+      document.getElementsByName("reserve")[0].reset()
     }
     return false
 
@@ -128,3 +132,11 @@ function hideError(i) // Set html attribute to hide error
   formData[i].setAttribute("data-error-visible",false)
 }
 
+//show success validation message
+function showConfirmation() {
+  confirmationMessage.style.display="block"
+}
+//hide success validation message
+function closeConfirmation() {
+  confirmationMessage.style.display="none"
+}
