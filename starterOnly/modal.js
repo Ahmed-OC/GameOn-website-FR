@@ -59,13 +59,19 @@ function validate(){
     
     if (!(firstName.value.length>=2)) // firstname must have a minimum length of 2
   {
+    showError(0,"Veuillez entrer 2 caractères ou plus pour le champ du prénom.")
     formisvalid=false
   }
+  else hideError(0)
+
 
   if (!(lastName.value.length>=2)) // lastName must have a minimum length of 2
   {
+    showError(1,"Veuillez entrer 2 caractères ou plus pour le champ du nom.")
     formisvalid=false
   }
+  else hideError(1)
+
 
     radios.forEach((radio) => {
       
@@ -76,33 +82,49 @@ function validate(){
     })
     if (radiochecked == 0)
     {
+      showError(5,"Vous devez choisir une option.")
       formisvalid = false
     }
-    
+    else hideError(5)
+
     if(!emailIsValid(email))
     {
+      showError(2,"Veuillez entrer une adresse mail correcte")
       formisvalid = false
     }
+    else hideError(2)
 
 
     if (!numberIsValid(number) || !number)
     {
+      showError(4,"Veuillez entrer uniquement des chiffres")
       formisvalid = false
     }
-
+    else hideError(4)
 
     if(!conditionbox.checked)
     {
+      showError(6,"Vous devez vérifier que vous acceptez les termes et conditions")
       formisvalid = false
     }
-
+    else hideError(6)
 
     if (formisvalid)
     {
       closemodal();
-      console.log("mamaou")
+      document.getElementsByTagName("reserve").reset();
     }
     return false
 
+}
+
+function showError(i,error) // Set html attribute to show error
+{
+  formData[i].setAttribute("data-error",error)
+  formData[i].setAttribute("data-error-visible",true)
+}
+function hideError(i) // Set html attribute to hide error
+{
+  formData[i].setAttribute("data-error-visible",false)
 }
 
