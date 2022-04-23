@@ -213,9 +213,9 @@ input {
   font-size: 0.4em;
   color: #e54858;
   display: block;
+  font-size: 10px;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -478,6 +478,60 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+.bg_confirmation
+{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+.confirmation
+{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  color: white;
+  font-size: 36px;
+  line-height: 51.34px;
+  font-weight: 400;
+  background-color: #232323;
+  position: fixed;
+  z-index: 1;
+  left: 30%;
+  top: 10%;
+  width: 40%;
+  height: 73vh;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+}
+.confirmation_btn
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  height: 40px;
+  position: absolute;
+  cursor: pointer;
+  bottom: 15px;
+  width: 32%;
+  background-color: #fe142f;
+}
+.confirmation_close
+{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -514,6 +568,29 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+  .confirmation
+  {
+    width: 100vw;
+    height: 90vh;
+    left: 0;
+  }
+  .content
+  {
+    max-width: initial;
+    margin: 0;
+    top: 0;
+    height: 90vh;
+  }
+  .bground
+  {
+    height: 90%;
+    top: 10%;
+  }
+  .bg_confirmation
+  {
+    height: 90%;
+    top: 10%;
   }
 }
 
