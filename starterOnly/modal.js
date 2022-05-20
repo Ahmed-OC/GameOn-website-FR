@@ -13,8 +13,14 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closebtn = document.querySelector(".close");
 const confirmationMessage = document.querySelector(".bg_confirmation")
+const labelcondition = document.getElementsByClassName("checkbox2-label")[0]
 
 
+// prevent the default function
+document.getElementsByClassName("btn-submit")[0].addEventListener("click", (e) => {
+  e.preventDefault();
+  validate();
+})
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -52,7 +58,7 @@ function numberIsValid(value) {
 }
 
 // validation form
-function validate() {
+function validate(event) {
   const firstName = document.getElementById("first")
   const lastName = document.getElementById("last")
   const email = document.getElementById("email").value;
@@ -115,10 +121,10 @@ function validate() {
 
   if (!conditionbox.checked) // condition box is checked
   {
-    showError(6, "Vous devez vérifier que vous acceptez les termes et conditions")
+    showErrorInput("Vous devez vérifier que vous acceptez les termes et conditions")
     formisvalid = false
   }
-  else hideError(6)
+  else hideErrorInput()
 
 
   if (formisvalid) // if the form is valid show the confirmation msg and reset the form
@@ -141,6 +147,15 @@ function hideError(i) // Set html attribute to hide error
   formData[i].setAttribute("data-error-visible", false)
 }
 
+function showErrorInput(error) // Set html attribute to show error
+{
+  labelcondition.setAttribute("data-error", error)
+  labelcondition.setAttribute("data-error-visible", true)
+}
+function hideErrorInput()
+{
+  labelcondition.setAttribute("data-error-visible", false)
+}
 //show success validation message
 function showConfirmation() {
   confirmationMessage.style.display = "block"

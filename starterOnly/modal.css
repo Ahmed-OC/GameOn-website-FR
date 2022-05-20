@@ -97,7 +97,6 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
@@ -210,10 +209,9 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
   color: #e54858;
   display: block;
-  font-size: 10px;
+  font-size: 0.6em;
   margin-top: 7px;
   margin-bottom: 7px;
   line-height: 0.3;
@@ -227,11 +225,25 @@ input {
   border: 2px solid #e54858;
 }
 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
+label[data-error]::after {
+  content: attr(data-error);
+  color: #e54858;
+  display: block;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
 } 
+label[data-error-visible="true"]::after {
+  opacity: 1;
+}
+label[data-error-visible="true"] .text-control {
+  border: 2px solid #e54858;
+}
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -541,6 +553,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    min-width: initial;
   }
   .hero-content::after {
     content: unset;
@@ -549,7 +562,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 50px;
     white-space: normal;
   }
   .hero-text {
@@ -580,6 +593,7 @@ footer {
     max-width: initial;
     margin: 0;
     top: 0;
+    overflow: scroll;
     height: 90vh;
   }
   .bground
@@ -592,6 +606,15 @@ footer {
     height: 90%;
     top: 10%;
   }
+
+  .formData[data-error]::after {
+    font-size: 0.4em;
+  }
+
+  label[data-error]::after {
+    font-size: 0.6em;
+  }
+  
 }
 
 @keyframes modalopen {
